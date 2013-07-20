@@ -25,7 +25,7 @@ public class LoggerExam {
 			Person p2 = new Person("Dani");
 			Person p3 = new Person("Ron");
 			
-			ppl.add(p1);
+			ppl.add(p1);//test
 			ppl.add(p2);
 			ppl.add(p3);
 			
