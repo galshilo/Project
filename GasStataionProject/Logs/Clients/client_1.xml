@@ -1,0 +1,25 @@
+аев 11, 2013 1:23:34 AM Client run
+INFO: Client_1 A : arrived to station
+аев 11, 2013 1:23:34 AM Client run
+INFO: Client_1 A : desires COFFEE
+аев 11, 2013 1:23:34 AM Client hangInCoffeeHouse
+INFO: Client_1 A : hanging in the coffee house
+аев 11, 2013 1:23:34 AM Client hangInCoffeeHouse
+INFO: Client_1 A : done hanging in the coffee house
+аев 11, 2013 1:23:34 AM Client getCoffee
+INFO: Client_1 A : assigned to Cashier #2:
+
+аев 11, 2013 1:23:34 AM Cashier getNextClientFromQueue
+INFO: CoffeeHouse_1: ready to serve Client_1 A 
+аев 11, 2013 1:23:34 AM Cashier servClient
+INFO: CoffeeHouse_1: Client_1 A  is paying 
+
+аев 11, 2013 1:23:35 AM Cashier servClient
+INFO: CoffeeHouse_1: Client_1 A  done paying 
+
+аев 11, 2013 1:23:35 AM Client drinkCoffee
+INFO: Client_1 A : drinking his coffee... ahhh
+аев 11, 2013 1:23:35 AM Client drinkCoffee
+INFO: Client_1 A : done drinking his coffee... ahhh
+аев 11, 2013 1:23:35 AM Client run
+INFO: Client_1 A : leaves the station, Goodbye!

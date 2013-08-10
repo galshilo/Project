@@ -1,0 +1,22 @@
+аев 11, 2013 1:23:34 AM Pump run
+INFO: Pump_3: sleeping, waiting for new client
+аев 11, 2013 1:23:34 AM Client setPump
+INFO: Client_3 C : assigned to Pump_3
+аев 11, 2013 1:23:34 AM Pump addClient
+INFO: Pump_3: client Client_3 C  added to queue
+аев 11, 2013 1:23:34 AM Pump addClient
+INFO: Pump_3: wakes up!
+аев 11, 2013 1:23:34 AM Pump getNextClientFromQueue
+INFO: Pump_3: ready to serve client Client_3 C 
+аев 11, 2013 1:23:34 AM Pump setPumpState
+INFO: Pump_3: state changed to BUSSY
+аев 11, 2013 1:23:34 AM Pump giveFuel
+INFO: Pump_3: fueling Client_3 C 
+аев 11, 2013 1:23:36 AM Pump giveFuel
+INFO: Pump_3: done fueling Client_3 C 
+аев 11, 2013 1:23:36 AM Pump setPumpState
+INFO: Pump_3: state changed to READY
+аев 11, 2013 1:23:36 AM Pump addIncome
+INFO: Pump_3: income increased by 312.800000
+аев 11, 2013 1:23:36 AM Pump run
+INFO: Pump_3: sleeping, waiting for new client

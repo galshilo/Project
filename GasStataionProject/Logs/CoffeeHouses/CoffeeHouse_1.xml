@@ -1,0 +1,20 @@
+аев 11, 2013 1:23:34 AM Cashier getNextClientFromQueue
+INFO: CoffeeHouse_1: ready to serve Client_2 B 
+аев 11, 2013 1:23:34 AM Cashier getNextClientFromQueue
+INFO: CoffeeHouse_1: ready to serve Client_1 A 
+аев 11, 2013 1:23:34 AM Cashier servClient
+INFO: CoffeeHouse_1: Client_2 B  is paying 
+
+аев 11, 2013 1:23:34 AM Cashier servClient
+INFO: CoffeeHouse_1: Client_1 A  is paying 
+
+аев 11, 2013 1:23:34 AM Cashier addMoney
+INFO: CoffeeHouse_1: income increased by 5.250000
+аев 11, 2013 1:23:34 AM Cashier servClient
+INFO: CoffeeHouse_1: Client_2 B  done paying 
+
+аев 11, 2013 1:23:35 AM Cashier addMoney
+INFO: CoffeeHouse_1: income increased by 5.250000
+аев 11, 2013 1:23:35 AM Cashier servClient
+INFO: CoffeeHouse_1: Client_1 A  done paying 
+

@@ -1,0 +1,34 @@
+аев 11, 2013 1:23:34 AM Client run
+INFO: Client_3 C : arrived to station
+аев 11, 2013 1:23:34 AM Client run
+INFO: Client_3 C : desires FUELANDCOFFEE
+аев 11, 2013 1:23:34 AM Client setPump
+INFO: Client_3 C : assigned to Pump_3
+аев 11, 2013 1:23:34 AM Pump addClient
+INFO: Pump_3: client Client_3 C  added to queue
+аев 11, 2013 1:23:34 AM Client hangInCoffeeHouse
+INFO: Client_3 C : hanging in the coffee house
+аев 11, 2013 1:23:34 AM Pump getNextClientFromQueue
+INFO: Pump_3: ready to serve client Client_3 C 
+аев 11, 2013 1:23:34 AM Client hangInCoffeeHouse
+INFO: Client_3 C : done hanging in the coffee house
+аев 11, 2013 1:23:34 AM Client getCoffee
+INFO: Client_3 C : assigned to Cashier #2:
+
+аев 11, 2013 1:23:34 AM Pump handleClient
+INFO: Client_3 C : need to choose between coffee and fuel
+аев 11, 2013 1:23:34 AM Pump handleClient
+INFO: Client_3 C : decided to fuel
+аев 11, 2013 1:23:34 AM Client removeFromCashierQueue
+INFO: Client_3 C : has been removed from Cashier #2:
+
+аев 11, 2013 1:23:34 AM Pump giveFuel
+INFO: Pump_3: fueling Client_3 C 
+аев 11, 2013 1:23:36 AM Pump giveFuel
+INFO: Pump_3: done fueling Client_3 C 
+аев 11, 2013 1:23:36 AM Client drinkCoffee
+INFO: Client_3 C : drinking his coffee... ahhh
+аев 11, 2013 1:23:36 AM Client drinkCoffee
+INFO: Client_3 C : done drinking his coffee... ahhh
+аев 11, 2013 1:23:36 AM Client run
+INFO: Client_3 C : leaves the station, Goodbye!

@@ -1,0 +1,126 @@
+аев 11, 2013 1:23:32 AM CoffeeHouse addCashier
+INFO: CoffeeHouse_1: new cashier added Cashier #1:
+
+аев 11, 2013 1:23:32 AM CoffeeHouse addCashier
+INFO: CoffeeHouse_1: new cashier added Cashier #2:
+
+аев 11, 2013 1:23:32 AM CoffeeHouse addCashier
+INFO: CoffeeHouse_1: new cashier added Cashier #3:
+
+аев 11, 2013 1:23:32 AM GasStation openStation
+INFO: GasStation_1: Opened
+аев 11, 2013 1:23:32 AM GasStationProject main
+INFO: Station opened
+аев 11, 2013 1:23:34 AM Pump run
+INFO: Pump_1: sleeping, waiting for new client
+аев 11, 2013 1:23:34 AM Client run
+INFO: Client_3 C : arrived to station
+аев 11, 2013 1:23:34 AM Client run
+INFO: Client_2 B : arrived to station
+аев 11, 2013 1:23:34 AM Client run
+INFO: Client_1 A : arrived to station
+аев 11, 2013 1:23:34 AM Pump run
+INFO: Pump_3: sleeping, waiting for new client
+аев 11, 2013 1:23:34 AM Pump run
+INFO: Pump_2: sleeping, waiting for new client
+аев 11, 2013 1:23:34 AM Client run
+INFO: Client_2 B : desires COFFEE
+аев 11, 2013 1:23:34 AM Client run
+INFO: Client_3 C : desires FUELANDCOFFEE
+аев 11, 2013 1:23:34 AM Client run
+INFO: Client_1 A : desires COFFEE
+аев 11, 2013 1:23:34 AM Client setPump
+INFO: Client_3 C : assigned to Pump_3
+аев 11, 2013 1:23:34 AM Client hangInCoffeeHouse
+INFO: Client_2 B : hanging in the coffee house
+аев 11, 2013 1:23:34 AM Client hangInCoffeeHouse
+INFO: Client_1 A : hanging in the coffee house
+аев 11, 2013 1:23:34 AM Pump addClient
+INFO: Pump_3: client Client_3 C  added to queue
+аев 11, 2013 1:23:34 AM Client hangInCoffeeHouse
+INFO: Client_2 B : done hanging in the coffee house
+аев 11, 2013 1:23:34 AM Client hangInCoffeeHouse
+INFO: Client_1 A : done hanging in the coffee house
+аев 11, 2013 1:23:34 AM Pump addClient
+INFO: Pump_3: wakes up!
+аев 11, 2013 1:23:34 AM Client getCoffee
+INFO: Client_2 B : assigned to Cashier #1:
+
+аев 11, 2013 1:23:34 AM Client getCoffee
+INFO: Client_1 A : assigned to Cashier #2:
+
+аев 11, 2013 1:23:34 AM Client hangInCoffeeHouse
+INFO: Client_3 C : hanging in the coffee house
+аев 11, 2013 1:23:34 AM Pump getNextClientFromQueue
+INFO: Pump_3: ready to serve client Client_3 C 
+аев 11, 2013 1:23:34 AM Cashier getNextClientFromQueue
+INFO: CoffeeHouse_1: ready to serve Client_2 B 
+аев 11, 2013 1:23:34 AM Client hangInCoffeeHouse
+INFO: Client_3 C : done hanging in the coffee house
+аев 11, 2013 1:23:34 AM Cashier getNextClientFromQueue
+INFO: CoffeeHouse_1: ready to serve Client_1 A 
+аев 11, 2013 1:23:34 AM Client getCoffee
+INFO: Client_3 C : assigned to Cashier #2:
+
+аев 11, 2013 1:23:34 AM Pump handleClient
+INFO: Client_3 C : need to choose between coffee and fuel
+аев 11, 2013 1:23:34 AM Cashier servClient
+INFO: CoffeeHouse_1: Client_2 B  is paying 
+
+аев 11, 2013 1:23:34 AM Cashier servClient
+INFO: CoffeeHouse_1: Client_1 A  is paying 
+
+аев 11, 2013 1:23:34 AM Pump handleClient
+INFO: Client_3 C : decided to fuel
+аев 11, 2013 1:23:34 AM Client removeFromCashierQueue
+INFO: Client_3 C : has been removed from Cashier #2:
+
+аев 11, 2013 1:23:34 AM Pump setPumpState
+INFO: Pump_3: state changed to BUSSY
+аев 11, 2013 1:23:34 AM Pump giveFuel
+INFO: Pump_3: fueling Client_3 C 
+аев 11, 2013 1:23:34 AM Cashier addMoney
+INFO: CoffeeHouse_1: income increased by 5.250000
+аев 11, 2013 1:23:34 AM Cashier servClient
+INFO: CoffeeHouse_1: Client_2 B  done paying 
+
+аев 11, 2013 1:23:35 AM Client drinkCoffee
+INFO: Client_2 B : drinking his coffee... ahhh
+аев 11, 2013 1:23:35 AM Client drinkCoffee
+INFO: Client_2 B : done drinking his coffee... ahhh
+аев 11, 2013 1:23:35 AM Client run
+INFO: Client_2 B : leaves the station, Goodbye!
+аев 11, 2013 1:23:35 AM Cashier addMoney
+INFO: CoffeeHouse_1: income increased by 5.250000
+аев 11, 2013 1:23:35 AM Cashier servClient
+INFO: CoffeeHouse_1: Client_1 A  done paying 
+
+аев 11, 2013 1:23:35 AM Client drinkCoffee
+INFO: Client_1 A : drinking his coffee... ahhh
+аев 11, 2013 1:23:35 AM Client drinkCoffee
+INFO: Client_1 A : done drinking his coffee... ahhh
+аев 11, 2013 1:23:35 AM Client run
+INFO: Client_1 A : leaves the station, Goodbye!
+аев 11, 2013 1:23:36 AM Pump giveFuel
+INFO: Pump_3: done fueling Client_3 C 
+аев 11, 2013 1:23:36 AM Pump setPumpState
+INFO: Pump_3: state changed to READY
+аев 11, 2013 1:23:36 AM Pump addIncome
+INFO: Pump_3: income increased by 312.800000
+аев 11, 2013 1:23:36 AM Client drinkCoffee
+INFO: Client_3 C : drinking his coffee... ahhh
+аев 11, 2013 1:23:36 AM Pump run
+INFO: Pump_3: sleeping, waiting for new client
+аев 11, 2013 1:23:36 AM Client drinkCoffee
+INFO: Client_3 C : done drinking his coffee... ahhh
+аев 11, 2013 1:23:36 AM Client run
+INFO: Client_3 C : leaves the station, Goodbye!
+аев 11, 2013 1:23:46 AM GasStation closeStation
+INFO: GasStation_1: Closed
+аев 11, 2013 1:23:46 AM GasStation closeStation
+INFO: Daily report:
+ Total income from fuel pumps: 312.800000
+Total income from coffee house: 10.500000
+Total income: 323.300000: 
+аев 11, 2013 1:23:46 AM GasStationProject main
+INFO: Station closed
