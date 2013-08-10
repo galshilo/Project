@@ -100,7 +100,7 @@ public class Client extends Thread {
 		}
 	}
 	this.desire = Desires.DONE;
-	gasStationLogger.log(Level.INFO, String.format("%s: leavs the station, Goodbye!", this.toString()));
+	gasStationLogger.log(Level.INFO, String.format("%s: leaves the station, Goodbye!", this.toString()));
 }
 
 	
@@ -167,7 +167,6 @@ public class Client extends Thread {
 	public void removeFromCashierQueue(){
 		gasStationLogger.log(Level.INFO, String.format("%s: has been removed from %s", this.toString(), this.cashier.toString()));
 		this.cashier.removeClient(this);
-		this.setCoffeeState(CoffeeHouseState.FREE);
 	}
 	
 	private void drinkCoffee() throws InterruptedException{

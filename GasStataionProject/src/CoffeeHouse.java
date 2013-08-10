@@ -24,7 +24,7 @@ public class CoffeeHouse extends Thread {
 		this.gasStation = gasStation;
 		initCashiers(numOfCashiers);
 
-		this.handler = new FileHandler("Logs\\CoffeeHouses\\coffeeHouse_" + this.id+".xml");
+		this.handler = new FileHandler("Logs\\CoffeeHouses\\CoffeeHouse_" + this.id+".xml");
 		this.handler.setFormatter(new SimpleFormatter());
 		this.handler.setFilter(new CoffeeHouseFilter(this.id));
 		gasStationLogger.addHandler(this.handler);

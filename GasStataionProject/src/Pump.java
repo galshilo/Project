@@ -65,12 +65,12 @@ public class Pump extends Thread {
 			synchronized (fuelRepository) {
 				synchronized (currentClient) {
 				this.setPumpState(State.BUSSY);
-					gasStationLogger.log(Level.INFO,String.format("%s: fueling client %d", this.toString(), this.currentClient.getClientId()));	
+					gasStationLogger.log(Level.INFO,String.format("%s: fueling %s", this.toString(), this.currentClient.toString()));	
 					this.currentClient.setPumpState(Client.PumpState.FUELING);		
 					Thread.sleep((long) (Math.random() * 5000));
 					this.currentClient.setPumpState(Client.PumpState.DONE);
 					this.fuelRepository.setCurrentFuelAmmount(ammount);
-					gasStationLogger.log(Level.INFO,String.format("%s: done fueling client %d", this.toString(), this.currentClient.getClientId()));
+					gasStationLogger.log(Level.INFO,String.format("%s: done fueling %s", this.toString(), this.currentClient.toString()));
 					this.setPumpState(State.READY);
 					currentClient.notifyAll();
 					fuelRepository.notifyAll();
@@ -94,7 +94,7 @@ public class Pump extends Thread {
 	public void addClient(Client client){
 		client.setPumpState(Client.PumpState.WAITINGFORPUMP);
 		this.queue.add(client);
-		gasStationLogger.log(Level.INFO,String.format("%s: client %d added to queue", this.toString(), client.getClientId()));
+		gasStationLogger.log(Level.INFO,String.format("%s: client %s added to queue", this.toString(), client.toString()));
 		if (queue.size() == 1){
 			synchronized (this) {
 				this.notifyAll(); //wakes up the pump (only if queue was empty)
@@ -117,7 +117,7 @@ public class Pump extends Thread {
 			synchronized (this.currentClient) {
 				gasStationLogger.log(Level.INFO,String.format("%s: need to choose between coffee and fuel", this.currentClient.toString()));
 				int randomState = (int)(Math.random() * 2);
-				gasStationLogger.log(Level.INFO,String.format("%s: decided to %s",(randomState == 0) ? "fuel" : "drink coffee", this.currentClient.toString()));
+				gasStationLogger.log(Level.INFO,String.format("%s: decided to %s",this.currentClient.toString(), (randomState == 0) ? "fuel" : "drink coffee"));
 				if (randomState == 0){//decided he wants to fuel, so he leaves the coffee house;
 					this.currentClient.removeFromCashierQueue();
 					this.currentClient.setCoffeeState(Client.CoffeeHouseState.DONE);
@@ -126,7 +126,7 @@ public class Pump extends Thread {
 			}
 			else {
 				this.currentClient.setPumpState(Client.PumpState.DONE);
-				gasStationLogger.log(Level.INFO,String.format("%s: client %s decided to leave the queue",this.toString(), this.currentClient.getClientId()));
+				gasStationLogger.log(Level.INFO,String.format("%s: client %s decided to leave the queue",this.toString(), this.currentClient.toString()));
 				return false;
 			}
 			}
@@ -141,7 +141,7 @@ public class Pump extends Thread {
 
 	private void getNextClientFromQueue() {
 		currentClient = queue.poll();		
-		gasStationLogger.log(Level.INFO,String.format("%s: ready to serve client %d", this.toString(),  this.currentClient.getClientId()));
+		gasStationLogger.log(Level.INFO,String.format("%s: ready to serve client %s", this.toString(),  this.currentClient.toString()));
 	}
 	
 	public void servClient() throws InterruptedException{
