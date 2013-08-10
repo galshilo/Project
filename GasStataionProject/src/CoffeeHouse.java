@@ -4,6 +4,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class CoffeeHouse extends Thread {
 	
@@ -23,7 +24,8 @@ public class CoffeeHouse extends Thread {
 		this.gasStation = gasStation;
 		initCashiers(numOfCashiers);
 
-		this.handler = new FileHandler("..\\Logs\\CoffeeHousees\\coffeeHouse_" + this.id+".xml");
+		this.handler = new FileHandler("Logs\\CoffeeHouses\\coffeeHouse_" + this.id+".xml");
+		this.handler.setFormatter(new SimpleFormatter());
 		this.handler.setFilter(new CoffeeHouseFilter(this.id));
 		gasStationLogger.addHandler(this.handler);
 	}
@@ -52,7 +54,7 @@ public class CoffeeHouse extends Thread {
 	private void addCashier(int id){
 		Cashier cashier = new Cashier(id, this, this.gasStation);
 		cashiers.add(cashier);
-		gasStationLogger.log(Level.INFO, String.format("%s: new cashier added %s", cashier.toString()));
+		gasStationLogger.log(Level.INFO, String.format("%s: new cashier added %s", this.toString(), cashier.toString()));
 	}
 	
 	public double getCoffeePrice(){

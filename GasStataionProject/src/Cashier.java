@@ -59,7 +59,6 @@ public class Cashier extends Thread {
 		
 		if (currentClient.getPumpState() == Client.PumpState.FUELING){
 			gasStationLogger.log(Level.INFO,String.format("%s: removed %s", this.coffeeHouse.toString(), this.currentClient.toString()));
-			System.out.println(String.format("%s has been removed from %s\n", this.currentClient.toString(), this.toString()));
 			return;
 		}
 		
@@ -69,12 +68,10 @@ public class Cashier extends Thread {
 			}
 			this.currentClient.setCoffeeState(Client.CoffeeHouseState.PAYING);
 			gasStationLogger.log(Level.INFO,String.format("%s: %s is paying \n", this.coffeeHouse.toString(), this.currentClient.toString()));
-			System.out.println(String.format("%s is paying to %d\n", currentClient.toString(),this.id));
 			Thread.sleep((long) (Math.random() * 5000));
 			addMoney();
 			this.currentClient.setCoffeeState(Client.CoffeeHouseState.FREE);
 			gasStationLogger.log(Level.INFO,String.format("%s: %s done paying \n", this.coffeeHouse.toString(), this.currentClient.toString()));
-			System.out.println(String.format("%s finsihed with %s\n", this.toString(), currentClient.getLastName()));
 			currentClient.notifyAll();//you can drink bitch;
 		}
 	}
@@ -83,7 +80,6 @@ public class Cashier extends Thread {
 	private void addMoney() throws InterruptedException{
 		this.income += coffeeHouse.getCoffeePrice();
 		gasStationLogger.log(Level.INFO,String.format("%s: income increased by %f", this.coffeeHouse.toString(), coffeeHouse.getCoffeePrice()));
-		System.out.println(String.format("%s income increased by %f\n", this.toString(), coffeeHouse.getCoffeePrice()));
 	}
 
 	public void addClient(Client client){
@@ -104,7 +100,6 @@ public class Cashier extends Thread {
 	private void getNextClientFromQueue() {
 		this.currentClient = queue.poll();
 		gasStationLogger.log(Level.INFO,String.format("%s: ready to serve %s", this.coffeeHouse.toString(), this.currentClient.toString()));
-		System.out.println(String.format("%s wants to serve %s\n", this.toString(),  this.currentClient.toString()));
 	}
 	
 	@Override

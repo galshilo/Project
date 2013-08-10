@@ -3,6 +3,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import java.util.logging.Handler;
 
@@ -34,7 +35,8 @@ public class FuelRepository extends Thread  {
 			this.state = State.READY;
 			this.gasStation = gasStation;
 			
-			this.handler = new FileHandler("..\\Logs\\FuelPools\\fuelPool_" + this.id+".xml");
+			this.handler = new FileHandler("Logs\\FuelPools\\fuelPool_" + this.id+".xml");
+			this.handler.setFormatter(new SimpleFormatter());
 			this.handler.setFilter(new PoolFilter(this.id));
 			gasStationLogger.addHandler(this.handler);
 		}
@@ -78,20 +80,16 @@ public class FuelRepository extends Thread  {
 		public void addFuel() throws InterruptedException{
 			synchronized (this) {
 				gasStationLogger.log(Level.WARNING, String.format("%s: beeing filled", this.toString()));
-				System.out.println("Fuel Repository is beeing filled\n");
 				this.state = State.BUSSY;
 				Thread.sleep((long) (Math.random() * 10000));
 				this.currentCapacity = maxCapacity;
 				this.state = State.READY;
 				gasStationLogger.log(Level.WARNING, String.format("%s: done filling", this.toString()));
-				System.out.println("Fuel Repository has been filled to maximum\n");
 			}		
 		}
 
 		private void setAlert(){
-			gasStationLogger.log(Level.WARNING, String.format("%s: reached minimum limit prapering to refill pool %d", this.toString(), this.currentCapacity));
-			System.out.println(String.format("Fuel repository has reached the minimum limit %d," +
-					" prapering to refill repository\n", (int)this.currentCapacity));
+			gasStationLogger.log(Level.WARNING, String.format("%s: reached minimum limit of %f liters prapering to refill pool", this.toString(), this.currentCapacity));
 
 			try {
 				addFuel();
