@@ -9,6 +9,8 @@ import java.util.logging.SimpleFormatter;
 //import java.util.logging.Handler;
 import java.util.logging.Handler;
 
+import Filters.PumpFilter;
+
 public class Pump extends Thread {
 
 	public enum State

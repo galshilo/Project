@@ -9,6 +9,8 @@ import java.util.logging.Handler;
 
 import javax.sql.rowset.spi.SyncResolver;
 
+import Filters.PoolFilter;
+
 
 public class FuelRepository extends Thread  {
 
