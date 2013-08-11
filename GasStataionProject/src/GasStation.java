@@ -38,13 +38,11 @@ public class GasStation extends Thread {
 		this.handler.setFormatter(new SimpleFormatter());
 		gasStationLogger.addHandler(this.handler);
 		initPumps(numOfPumps);
-		openStation();
-
-
 	}
 	
 	@Override
 	public void run(){
+		openStation();
 		fuelRepository.start();
 		startPumps();
 		coffeHouse.start();
@@ -77,7 +75,12 @@ public class GasStation extends Thread {
 		this.state = State.OPENED;
 	}
 	
-	public void closeStation() {
+	public void closeStation() throws InterruptedException {
+		gasStationLogger.log(Level.INFO, String.format("%s: waiting for all clients to leave the station", this.toString()));
+		for (Client c: clients){
+			c.join();
+		}
+
 		gasStationLogger.log(Level.INFO, String.format("%s: Closed", this.toString()));
 		this.state = State.CLOSED;
 		gasStationLogger.log(Level.INFO, String.format("%s: ", this.getFinancialReport()));

@@ -53,10 +53,12 @@ public class Client extends Thread {
 	private CoffeeHouse coffeeHouse;
 	private GasStation gasStation;
 	private Handler handler;
+	protected Object finished;
 	
 	
 	public Client(int id, String firstName, String lastName, double numberOfLiters, GasStation gasStation) throws SecurityException, IOException{
 		this.id = id;
+		this.finished = new Object();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gasStation = gasStation;
@@ -94,10 +96,10 @@ public class Client extends Thread {
 			break;
 		}
 	}catch (InterruptedException e) { }
-	while (this.coffeeState != CoffeeHouseState.DONE || this.pumpState != PumpState.DONE){
-		synchronized (this) {
+	while (this.pumpState != PumpState.DONE){
+		synchronized (this.finished) {
 			try {
-				this.wait();
+				this.finished.wait();
 			} catch (InterruptedException e) { }
 		}
 	}
@@ -169,6 +171,9 @@ public class Client extends Thread {
 	public void removeFromCashierQueue(){
 		gasStationLogger.log(Level.INFO, String.format("%s: has been removed from %s", this.toString(), this.cashier.toString()));
 		this.cashier.removeClient(this);
+		synchronized (this) {
+			this.notifyAll();	
+		}
 	}
 	
 	private void drinkCoffee() throws InterruptedException{
@@ -186,9 +191,11 @@ public class Client extends Thread {
 		hangInCoffeeHouse();
 		getCoffee();
 		synchronized (this) {
-			this.wait();//pay first bitch
+			this.wait();
 		}
-		drinkCoffee();	
+		if (this.coffeeState != CoffeeHouseState.DONE){
+			drinkCoffee();	
+		}
 	}
 	
 	

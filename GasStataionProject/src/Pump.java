@@ -78,6 +78,9 @@ public class Pump extends Thread {
 					fuelRepository.notifyAll();
 				}
 			}
+			synchronized (this.currentClient.finished) {
+				this.currentClient.finished.notifyAll();
+			}
 	}
 	
 	public int getPumpId(){
@@ -97,12 +100,10 @@ public class Pump extends Thread {
 		client.setPumpState(Client.PumpState.WAITINGFORPUMP);
 		this.queue.add(client);
 		gasStationLogger.log(Level.INFO,String.format("%s: client %s added to queue", this.toString(), client.toString()));
-		if (queue.size() == 1){
 			synchronized (this) {
-				this.notifyAll(); //wakes up the pump (only if queue was empty)
+				this.notifyAll(); 
 				gasStationLogger.log(Level.INFO,String.format("%s: wakes up!", this.toString()));
 			}
-		}
 	}
 	
 	public void removeClient(Client client){
@@ -118,11 +119,12 @@ public class Pump extends Thread {
 		{
 			synchronized (this.currentClient) {
 				gasStationLogger.log(Level.INFO,String.format("%s: need to choose between coffee and fuel", this.currentClient.toString()));
-				int randomState = (int)(Math.random() * 2);
+				int randomState = (int)(Math.random() * 5);
 				gasStationLogger.log(Level.INFO,String.format("%s: decided to %s",this.currentClient.toString(), (randomState == 0) ? "fuel" : "drink coffee"));
-				if (randomState == 0){//decided he wants to fuel, so he leaves the coffee house;
+				if (randomState == 0){
 					this.currentClient.removeFromCashierQueue();
 					this.currentClient.setCoffeeState(Client.CoffeeHouseState.DONE);
+					this.currentClient.notifyAll();
 					return true;
 
 			}
@@ -137,6 +139,9 @@ public class Pump extends Thread {
 			currentCoffeeState == Client.CoffeeHouseState.DRINKING) {
 			this.currentClient.setPumpState(Client.PumpState.DONE);
 			return false;
+		}
+		synchronized (this.currentClient) {
+			this.currentClient.notifyAll();
 		}
 		return true;
 	}

@@ -67,7 +67,6 @@ public class FuelRepository extends Thread  {
 				
 		public void setCurrentFuelAmmount(double ammount) {
 			this.currentCapacity -= ammount;
-			//exception if no enough fuel
 		}
 		
 		public boolean isEmpty(){

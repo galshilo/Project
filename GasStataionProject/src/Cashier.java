@@ -64,6 +64,7 @@ public class Cashier extends Thread {
 		
 		synchronized (currentClient) {
 			if (currentClient.getCoffeeState() == Client.CoffeeHouseState.DONE){
+				currentClient.notifyAll();
 				return;
 			}
 			this.currentClient.setCoffeeState(Client.CoffeeHouseState.PAYING);
@@ -72,7 +73,7 @@ public class Cashier extends Thread {
 			addMoney();
 			this.currentClient.setCoffeeState(Client.CoffeeHouseState.FREE);
 			gasStationLogger.log(Level.INFO,String.format("%s: %s done paying \n", this.coffeeHouse.toString(), this.currentClient.toString()));
-			currentClient.notifyAll();//you can drink bitch;
+			currentClient.notifyAll();
 		}
 	}
 	
